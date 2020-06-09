@@ -1,0 +1,104 @@
+:root {
+   --tile-size: 210px;
+}
+* {
+   box-sizing: border-box;
+}
+
+#board {
+   display: grid;
+   grid-template-columns: var(--tile-size) repeat(7, 185px) var(--tile-size);
+   grid-template-rows: var(--tile-size) repeat(7, 185px) var(--tile-size);
+   grid-template-areas:
+      "c c c c c c c c d"
+      "b o o o o o o o d"
+      "b o o o o o o o d"
+      "b o o o o o o o d"
+      "b o o o o o o o d"
+      "b o o o o o o o d"
+      "b o o o o o o o d"
+      "b o o o o o o o d"
+      "b a a a a a a a a";
+}
+#board-center {
+   background-color: #d5e8d4;
+   grid-area: o;
+}
+
+#row-0 .tile-color,
+#row-2 .tile-color {
+   width: 100%;
+}
+#row-1 .tile-color,
+#row-3 .tile-color {
+   height: 100%;
+}
+#board .tile {
+   background: #d5e8d4;
+   border: 1px solid black;
+   box-sizing: border-box;
+   height: 100%;
+   width: 100%;
+   overflow: hidden;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+#row-0 {
+   flex-direction: row-reverse;
+   grid-area: a;
+}
+#row-1 {
+   grid-area: b;
+   flex-direction: column-reverse;
+}
+#row-1 .tile {
+   writing-mode: vertical-rl;
+}
+#row-2 {
+   grid-area: c;
+   flex-direction: row;
+}
+#row-2 .tile {
+   writing-mode: horizontal-tb;
+   flex-direction: column;
+}
+
+#row-3 {
+   grid-area: d;
+   flex-direction: column;
+}
+#row-3 .tile {
+   writing-mode: vertical-lr;
+}
+.tile-color {
+   border: 1px solid;
+   flex: 3;
+}
+#row-0 .tile-name,
+#row-2 .tile-name {
+   padding-top: 0.5rem;
+}
+#row-1 .tile-name {
+   padding-right: 0.5rem;
+}
+#row-3 .tile-name {
+   padding-left: 0.5rem;
+}
+.tile-name {
+   font-size: 23px;
+   font-family: cursive;
+   text-align: center;
+   flex: 6;
+}
+.tile-price {
+   font-family: cursive;
+   flex: 3;
+   font-size: 25px;
+}
+.row {
+   display: flex;
+}
+.row > .tile:nth-child(1) {
+   flex: 0 0 var(--tile-size);
+}
