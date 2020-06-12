@@ -1,9 +1,10 @@
 import * as React from "react";
 import { Component } from "react";
 import { ITile } from "../Compnents/Game/Board/Row/Tile/Tile";
-import { initialTiles } from "./BoardData";
+import { initialTiles, allTiles } from "./BoardData";
+import { IPlayer } from "../Compnents/Game/PlayersBar/PlayerTab/PlayerTab";
+import { piecesData } from "../Compnents/Game/PlayersBar/PlayerTab/PiecesData";
 
-interface IPlayer {}
 interface IGameSettings {
    houses: number;
    hotels: number;
@@ -26,12 +27,35 @@ const initialGameSettings: IGameSettings = {
    freeParkingMoney: 50,
    maxTurns: 35,
 };
+const getRandomProp = () => allTiles[Math.floor(Math.random() * 40)];
+const randomProps = () => [...Array()].map((_) => getRandomProp());
+const initalPlayers: IPlayer[] = [
+   {
+      name: "Maheer",
+      position: 12,
+      props: allTiles,
+      id: 0,
+      piece: piecesData[0],
+      money: 1000,
+      haveJailFreeCard: false,
+   },
+   {
+      name: "Maheer",
+      position: 12,
+      props: [],
+      id: 1,
+      piece: piecesData[1],
+      money: 1000,
+      haveJailFreeCard: false,
+   },
+];
 export const initalGameState: IGameState = {
-   tiles: initialTiles,
-   players: [],
+   tiles: allTiles,
+   players: initalPlayers,
    turnsPlayed: 0,
    gameSettings: initialGameSettings,
 };
+
 const initalGameContext: IGameContext = [initalGameState, () => {}];
 type ActionType = { name: string; data: any };
 export type IGameContext = [IGameState, React.Dispatch<ActionType>];

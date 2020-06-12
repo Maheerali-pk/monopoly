@@ -1,0 +1,5 @@
+.card-row {
+   display: flex;
+   flex-direction: row;
+   margin-bottom: 2.5rem;
+}

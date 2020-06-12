@@ -1,5 +1,7 @@
 import * as React from "react";
 import { Component } from "react";
+import { GameContext } from "../../../../../Contexts/GameContext";
+import Piece from "../../../PlayersBar/PlayerTab/Piece/Piece";
 export type TileType =
    | "colored-property"
    | "destination"
@@ -24,6 +26,7 @@ export type TileColor =
    | "yellow";
 export type RentType = [number, number, number, number, number];
 export interface ITile {
+   id: number;
    name: string;
    type: TileType;
    active?: boolean;
@@ -34,8 +37,14 @@ export interface ITile {
    color?: TileColor;
    price?: number;
    taxValue?: number;
+   isMotergaged?: boolean;
+   isCardSelected?: boolean;
 }
-const Tile: React.SFC<ITile> = ({ color, price, name }) => {
+const Tile: React.SFC<ITile> = ({ color, price, name, id }) => {
+   const [gameState, dispatchGame] = React.useContext(GameContext);
+   const playersOnTile = gameState.players.filter(
+      ({ position }) => position === id
+   );
    return (
       <div className="tile">
          {color && (
@@ -46,6 +55,11 @@ const Tile: React.SFC<ITile> = ({ color, price, name }) => {
          )}
          <div className="tile-name">{name}</div>
          {price && <div className="tile-price">{`$${price}`}</div>}
+         <div className="pieces-cont">
+            {playersOnTile.map((x) => (
+               <Piece piece={x.piece} size={"small"}></Piece>
+            ))}
+         </div>
       </div>
    );
 };

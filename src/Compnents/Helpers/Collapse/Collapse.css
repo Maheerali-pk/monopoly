@@ -1,0 +1,13 @@
+.collapse.opened {
+   transform: scaleY(1);
+   transition: transform 0.1s ease;
+}
+.collapse {
+   transform-origin: top;
+}
+.collapse.closed {
+   transform: scaleY(0);
+   max-height: 0;
+   height: 0;
+   overflow: hidden;
+}

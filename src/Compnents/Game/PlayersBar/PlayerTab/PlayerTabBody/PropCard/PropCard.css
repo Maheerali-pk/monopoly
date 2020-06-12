@@ -1,0 +1,12 @@
+.prop-card {
+   padding: 0.3rem 0.8rem;
+   font-size: 32px;
+   margin-top: 5px;
+   border-width: 0px;
+   border-left-width: 1.7rem;
+   border-style: solid;
+   box-shadow: 3px 3px 3px black;
+   background-color: #97cd9461;
+   width: 350px;
+   margin-right: 1rem;
+}

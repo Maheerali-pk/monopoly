@@ -8,7 +8,7 @@ income-tax 200
 
 `;
 
-export const initialTiles: ITile[] = [
+export const initialTiles: Partial<ITile>[] = [
    //0-5
    {
       name: "Go",
@@ -297,3 +297,7 @@ export const initialTiles: ITile[] = [
       allRents: [10, 30, 90, 160, 250],
    },
 ];
+export const allTiles: ITile[] = initialTiles.map((x, id) => ({
+   ...x,
+   id,
+})) as ITile[];

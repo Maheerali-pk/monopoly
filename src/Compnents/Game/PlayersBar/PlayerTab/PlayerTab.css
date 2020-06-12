@@ -1,0 +1,37 @@
+.player-tab-head {
+   display: flex;
+   align-items: center;
+   background: #a8e4a4;
+   border: 1px solid black;
+   justify-content: center;
+   cursor: pointer;
+   filter: brightness(0.9);
+}
+.player-tab-head:hover {
+   filter: brightness(1);
+   transition: 0.2s;
+}
+.players-bar {
+   background: rgb(193, 228, 191);
+}
+
+.player-name {
+   font-size: 50px;
+   flex: 7;
+}
+.player-tab-head .piece-wrapper {
+   flex: 3;
+   text-align: center;
+}
+.player-tab-head .player-money {
+   flex: 2;
+   font-size: 40px;
+   font-family: fantasy;
+}
+.player-tab-body {
+   padding: 15px;
+   border: 2px solid black;
+   height: 100%;
+   display: flex;
+   flex-direction: column-reverse;
+}
