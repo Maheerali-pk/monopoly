@@ -5,11 +5,14 @@
    border: 1px solid black;
    justify-content: center;
    cursor: pointer;
-   filter: brightness(0.9);
+   filter: brightness(0.8);
 }
 .player-tab-head:hover {
-   filter: brightness(1);
+   filter: brightness(0.95);
    transition: 0.2s;
+}
+.player-tab-head.active {
+   filter: brightness(1);
 }
 .players-bar {
    background: rgb(193, 228, 191);

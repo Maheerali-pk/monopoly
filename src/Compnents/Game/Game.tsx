@@ -12,7 +12,9 @@ import {
 export interface GameProps {}
 
 const Game: React.SFC<GameProps> = () => {
-   const [state, dispatch] = React.useReducer(GameReducer, initalGameState);
+   console.log("game rendered");
+   const memoizedReducer = React.useCallback(GameReducer, []);
+   const [state, dispatch] = React.useReducer(memoizedReducer, initalGameState);
    return (
       <div id="game">
          <GameContext.Provider value={[state, dispatch]}>
@@ -23,4 +25,4 @@ const Game: React.SFC<GameProps> = () => {
    );
 };
 
-export default Game;
+export default React.memo(Game);

@@ -28,7 +28,7 @@ const arrangeProps = (props: ITile[]) => {
 
 const PlayerTabBody: React.SFC<PlayerTabBodyProps> = ({ props }) => {
    const arrangedProps = React.useMemo(() => arrangeProps(props), [props]);
-   console.log(arrangedProps);
+   // console.log(arrangedProps);
    return (
       <div className="player-tab-body">
          {arrangedProps

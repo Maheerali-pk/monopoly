@@ -1,0 +1,9 @@
+.dice {
+   height: 10rem;
+   width: 10rem;
+   font-size: 7rem;
+   background-color: red;
+}
+.dice-box {
+   display: flex;
+}

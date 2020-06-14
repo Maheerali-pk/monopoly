@@ -4,8 +4,9 @@ import { ITile } from "../Compnents/Game/Board/Row/Tile/Tile";
 import { initialTiles, allTiles } from "./BoardData";
 import { IPlayer } from "../Compnents/Game/PlayersBar/PlayerTab/PlayerTab";
 import { piecesData } from "../Compnents/Game/PlayersBar/PlayerTab/PiecesData";
+import { AllActions, FunctionsObject, ActionKeys } from "./AllActions";
 
-interface IGameSettings {
+export interface IGameSettings {
    houses: number;
    hotels: number;
    startingFunds: number;
@@ -13,11 +14,14 @@ interface IGameSettings {
    maxTurns: number;
 }
 
-interface IGameState {
+export interface IGameState {
+   lastRoll: [number, number] | null;
    tiles: ITile[];
    players: IPlayer[];
    turnsPlayed: number;
    gameSettings: IGameSettings;
+   currentTurn: number;
+   canRollDice: boolean;
 }
 
 const initialGameSettings: IGameSettings = {
@@ -54,11 +58,22 @@ export const initalGameState: IGameState = {
    players: initalPlayers,
    turnsPlayed: 0,
    gameSettings: initialGameSettings,
+   currentTurn: 0,
+   canRollDice: true,
+   lastRoll: null,
 };
 
 const initalGameContext: IGameContext = [initalGameState, () => {}];
-type ActionType = { name: string; data: any };
-export type IGameContext = [IGameState, React.Dispatch<ActionType>];
-export const GameReducer = (state: IGameState, action: ActionType) => state;
+export type IGameContext = [IGameState, React.Dispatch<Partial<AllActions>>];
+export const GameReducer = (state: IGameState, action: Partial<AllActions>) => {
+   let tempState: IGameState = JSON.parse(JSON.stringify(state));
+   console.log("reducer called", action);
+   for (let key in action) {
+      key = key as ActionKeys;
+      const func = FunctionsObject[key as ActionKeys];
+      tempState = func(state, action[key as ActionKeys]);
+   }
+   return tempState;
+};
 
 export const GameContext = React.createContext(initalGameContext);

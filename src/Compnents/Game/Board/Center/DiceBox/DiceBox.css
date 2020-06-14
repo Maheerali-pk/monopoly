@@ -1,0 +1,23 @@
+.dice {
+   height: 10rem;
+   width: 10rem;
+   font-size: 7rem;
+   background-color: red;
+   border: 2px solid black;
+   margin: 1rem;
+   position: relative;
+   border-radius: 1rem;
+   box-shadow: 5px 5px 5px black;
+}
+#dice-box {
+   display: flex;
+   justify-content: center;
+}
+.dot {
+   position: absolute;
+   height: 1.3rem;
+   width: 1.3rem;
+   background-color: white;
+   transform: translate(-50%, -50%);
+   border-radius: 50px;
+}

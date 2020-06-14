@@ -9,9 +9,10 @@ const PropCard: React.SFC<ITile> = ({
    isCardSelected,
    isMotergaged,
 }) => {
-   const filterString = `brightness(${isCardSelected ? 1 : 0.9} grayscale(${
-      isMotergaged ? 0.5 : 0
-   }))`;
+   const filterString = `brightness(${isCardSelected ? 1 : 0.95}) grayscale(${
+      isMotergaged ? 0.7 : 0
+   })`;
+   // console.log(filterString);
    return (
       <div
          style={{ borderColor: color, filter: filterString }}

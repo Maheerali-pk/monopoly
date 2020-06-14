@@ -1,0 +1,17 @@
+.btn {
+   background-color: #a8e4a4;
+   font-size: 3.2rem;
+   padding: 1rem 3rem;
+   border-radius: 1.5rem;
+   box-shadow: 5px 5px 5px black;
+   margin: 1rem;
+}
+#board-center {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+#center-menu {
+   text-align: center;
+}

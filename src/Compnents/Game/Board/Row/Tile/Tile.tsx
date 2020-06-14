@@ -40,13 +40,16 @@ export interface ITile {
    isMotergaged?: boolean;
    isCardSelected?: boolean;
 }
-const Tile: React.SFC<ITile> = ({ color, price, name, id }) => {
+const Tile: React.SFC<ITile> = ({ color, price, name, id, isMotergaged }) => {
    const [gameState, dispatchGame] = React.useContext(GameContext);
    const playersOnTile = gameState.players.filter(
       ({ position }) => position === id
    );
    return (
-      <div className="tile">
+      <div
+         style={{ filter: `grayscale(${isMotergaged ? 0.7 : 0})` }}
+         className="tile"
+      >
          {color && (
             <div
                className="tile-color"

@@ -59,6 +59,7 @@ export const initialTiles: Partial<ITile>[] = [
       color: "blue",
       type: "colored-property",
       price: 80,
+      isMotergaged: true,
       housePrice: 50,
       allRents: [10, 30, 90, 160, 250],
    },

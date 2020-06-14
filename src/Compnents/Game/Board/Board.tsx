@@ -4,6 +4,7 @@ import { Component } from "react";
 import { GameContext } from "../../../Contexts/GameContext";
 import Tile from "./Row/Tile/Tile";
 import Row from "./Row/Row";
+import Center from "./Center/Center";
 export interface BoardProps {}
 
 const Board: React.SFC<BoardProps> = () => {
@@ -15,7 +16,7 @@ const Board: React.SFC<BoardProps> = () => {
    console.log(rows);
    return (
       <div id="board">
-         <div id="board-center"></div>
+         <Center></Center>
          {rows.map((row, i) => (
             <Row {...row}></Row>
          ))}

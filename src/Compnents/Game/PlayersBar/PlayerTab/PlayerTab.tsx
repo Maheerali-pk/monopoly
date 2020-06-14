@@ -7,6 +7,7 @@ import Collapse from "../../../Helpers/Collapse/Collapse";
 import PropCard from "./PlayerTabBody/PropCard/PropCard";
 import { ITile } from "../../Board/Row/Tile/Tile";
 import PlayerTabBody from "./PlayerTabBody/PlayerTabBody";
+import { GameContext } from "../../../../Contexts/GameContext";
 export interface IPlayer {
    name: string;
    id: number;
@@ -17,12 +18,15 @@ export interface IPlayer {
    piece: IPiece;
 }
 
-const PlayerTab: React.SFC<IPlayer> = ({ name, money, piece, props }) => {
+const PlayerTab: React.SFC<IPlayer> = ({ name, money, piece, props, id }) => {
    const [isOpen, setIsOpen] = React.useState(false);
+   const [gameState, dispatchGame] = React.useContext(GameContext);
    return (
       <div className="player-tab">
          <div
-            className="player-tab-head"
+            className={`player-tab-head ${
+               gameState.currentTurn === id && "active"
+            }`}
             onClick={() => {
                setIsOpen(!isOpen);
             }}
