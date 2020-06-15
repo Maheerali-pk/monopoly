@@ -48,7 +48,8 @@ const Tile: React.SFC<ITile> = ({ color, price, name, id, isMotergaged }) => {
    return (
       <div
          style={{ filter: `grayscale(${isMotergaged ? 0.7 : 0})` }}
-         className="tile"
+         className={`tile`}
+         data-tileno={`${id}`}
       >
          {color && (
             <div
@@ -59,8 +60,12 @@ const Tile: React.SFC<ITile> = ({ color, price, name, id, isMotergaged }) => {
          <div className="tile-name">{name}</div>
          {price && <div className="tile-price">{`$${price}`}</div>}
          <div className="pieces-cont">
-            {playersOnTile.map((x) => (
-               <Piece piece={x.piece} size={"small"}></Piece>
+            {playersOnTile.map((player) => (
+               <Piece
+                  playerid={player.id}
+                  piece={player.piece}
+                  size={"small"}
+               ></Piece>
             ))}
          </div>
       </div>

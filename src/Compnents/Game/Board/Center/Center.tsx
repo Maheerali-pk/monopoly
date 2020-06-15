@@ -30,12 +30,9 @@ const Center: React.SFC<CenterProps> = () => {
       { currentTurn, players, canRollDice },
       dispatchGame,
    ] = React.useContext(GameContext);
-
    const currentPlayer = players[currentTurn];
    //Roll
    const roll = React.useCallback(() => {
-      console.log("roll is dispatched");
-
       dispatchGame({ roll: "" });
    }, []);
 
@@ -48,23 +45,34 @@ const Center: React.SFC<CenterProps> = () => {
    return (
       <div id="board-center">
          <div id="center-menu">
-            <button disabled={!canRollDice} className={`btn`} onClick={roll}>
+            <button
+               disabled={!canRollDice}
+               className={`btn btn-roll`}
+               onClick={roll}
+            >
                Roll
             </button>
 
-            <button className="btn" onClick={endTurn} disabled={canRollDice}>
+            <button
+               className="btn btn-end-turn"
+               onClick={endTurn}
+               disabled={canRollDice}
+            >
                End turn
             </button>
-            <button className="btn" disabled={!canBuildHouses(currentPlayer)}>
+            <button
+               className="btn  btn-build-houses"
+               disabled={!canBuildHouses(currentPlayer)}
+            >
                Build Houses
             </button>
             <button
-               className="btn"
+               className="btn btn-motergage"
                disabled={!(currentPlayer.props.length !== 0)}
             >
                Un/motergage Properties
             </button>
-            <button className="btn">Trade</button>
+            <button className="btn btn-trade">Trade</button>
             <DiceBox></DiceBox>
          </div>
       </div>

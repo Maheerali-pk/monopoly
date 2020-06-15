@@ -22,6 +22,7 @@ export interface IGameState {
    gameSettings: IGameSettings;
    currentTurn: number;
    canRollDice: boolean;
+   propCardShowing?: number;
 }
 
 const initialGameSettings: IGameSettings = {
@@ -36,7 +37,7 @@ const randomProps = () => [...Array()].map((_) => getRandomProp());
 const initalPlayers: IPlayer[] = [
    {
       name: "Maheer",
-      position: 12,
+      position: 0,
       props: allTiles,
       id: 0,
       piece: piecesData[0],
@@ -45,10 +46,19 @@ const initalPlayers: IPlayer[] = [
    },
    {
       name: "Maheer",
-      position: 12,
+      position: 0,
       props: [],
       id: 1,
       piece: piecesData[1],
+      money: 1000,
+      haveJailFreeCard: false,
+   },
+   {
+      name: "Maheer",
+      position: 0,
+      props: [],
+      id: 2,
+      piece: piecesData[2],
       money: 1000,
       haveJailFreeCard: false,
    },

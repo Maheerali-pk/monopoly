@@ -12,10 +12,15 @@ const sizeObject = {
    medium: 130,
    big: 200,
 };
-const Piece: React.SFC<PieceProps> = ({ piece, size }) => {
+const Piece: React.SFC<PieceProps & { playerid?: number }> = ({
+   piece,
+   size,
+   playerid,
+}) => {
    return (
       <img
-         className={`piece ${size}`}
+         className={`piece ${size} piece-${playerid}`}
+         data-playerid={playerid}
          src={require(`../../../../../Images/pieces/${piece.name}.png`)}
       />
    );
